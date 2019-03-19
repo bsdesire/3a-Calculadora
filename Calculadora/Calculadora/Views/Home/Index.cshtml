@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>A minha calculadora maravilhosa!</h2>
+
+@using (Html.BeginForm())
+{   @* <form></form>*@
+<table>
+    <tr>
+        <td colspan="5"><input type="text" name="visor" readonly="readonly" value="0" /></td>
+    </tr>
+    <tr>
+        <td><input type="submit" name="" value="7" /></td>
+        <td><input type="submit" name="" value="8" /></td>
+        <td><input type="submit" name="" value="9" /></td>
+        <td><input type="submit" name="" value="/" /></td>
+        <td><input type="submit" name="" value="+/-" /></td>
+    </tr>
+    <tr>
+        <td><input type="submit" name="" value="4" /></td>
+        <td><input type="submit" name="" value="5" /></td>
+        <td><input type="submit" name="" value="6" /></td>
+        <td><input type="submit" name="" value="X" /></td>
+        <td><input type="submit" name="" value="C" /></td>
+    </tr>
+    <tr>
+        <td><input type="submit" name="" value="1" /></td>
+        <td><input type="submit" name="" value="2" /></td>
+        <td><input type="submit" name="" value="3" /></td>
+        <td><input type="submit" name="" value="-" /></td>
+        <td rowspan="2"><input type="submit" name="" value="=" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" name="" value="0" /></td>
+        <td><input type="submit" name="" value="." /></td>
+        <td><input type="submit" name="" value="+" /></td>
+    </tr>
+</table>
+}
+

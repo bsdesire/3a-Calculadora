@@ -15,6 +15,7 @@ namespace Calculadora.Controllers
             ViewBag.Resposta = "0";
             Session["primeiraVezOperador"] = true;
             Session["iniciarOperando"] = false;
+            Session["baseNum"] = "DEC";
             return View();
         }
 
@@ -60,9 +61,9 @@ namespace Calculadora.Controllers
                         resposta = trocavalor;
                     }
                     break;
-                case ",":
+                case ".":
                     //Processar o caso da ','
-                    if (!visor.Contains(","))
+                    if (!visor.Contains("."))
                     {
                         resposta = resposta + btn;
                     }
@@ -126,7 +127,24 @@ namespace Calculadora.Controllers
                     Session["primeiraVezOperador"] = true;
                     Session["iniciarOperando"] = false;
                     break;
-            }
+                case "BIN":
+                    if((string)Session["baseNum"] == "DEC")
+                    {
+                        int valor = Convert.ToInt32(resposta);
+                        string bin = Convert.ToString(valor, 2);
+                        resposta = bin;
+                        Session["baseNum"] = "BIN";
+                    }
+                    break;
+                case "DEC":
+                    if ((string)Session["baseNum"] == "BIN")
+                    {
+                        int dec = Convert.ToInt32(resposta, 10);
+                        resposta = dec.ToString();
+                        Session["baseNum"] = "DEC";
+                    }
+                    break;
+            }//switch
 
 
             //devolver a 'resposta' para o visor do ecrã

@@ -21,6 +21,7 @@ textarea {
     max-width: 280px;
 }
 
+
 .visor {
     background-color: #009900 !important;
     color: #ccc;
@@ -31,6 +32,14 @@ textarea {
 .calculadora {
     border: 5px solid #000;
     background-color: #808080;
+    border-collapse:unset;
+}
+
+.nome-calc {
+    text-align: center;
+    font-family: Digital-7;
+    font-size:30px;
+    color:#ffd800;
 }
 
 .calculadora > tbody > tr > td > input{
@@ -48,8 +57,8 @@ textarea {
 }
 
 .calculadora > tbody > tr:first-child > td{
-    padding-top:25px;
-    padding-bottom:5px;
+    padding-top:10px;
+    padding-bottom:20px;
 }
 
 .calculadora > tbody > tr:last-child > td {

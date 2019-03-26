@@ -8,8 +8,13 @@
 @using (Html.BeginForm())
 {   @* <form></form>*@
 <table class="calculadora">
+    <tr><td colspan="5" class="nome-calc"><span>CASIO</span></td></tr>
     <tr>
         <td colspan="5"><input type="text" name="visor" readonly="readonly" value="@ViewBag.Resposta" class="form-control visor" /></td>
+    </tr>
+    <tr>
+        <td colspan="2"><input type="submit" name="btn" class="btn btn-default" value="DEC" /></td>
+        <td colspan="2"><input type="submit" name="btn" class="btn btn-default" value="BIN" /></td>
     </tr>
     <tr>
         <td><input type="submit" name="btn" class="btn btn-default" value="7" /></td>
@@ -30,11 +35,11 @@
         <td><input type="submit" name="btn" class="btn btn-default" value="2" /></td>
         <td><input type="submit" name="btn" class="btn btn-default" value="3" /></td>
         <td><input type="submit" name="btn" class="btn btn-warning" value="-" /></td>
-        <td rowspan="2" style="height: 72px;padding-bottom: 25px;"><input type="submit" name="btn" class="btn btn-success"  value="=" style="height:100%;" /></td>
+        <td rowspan="2" style="height: 72px;padding-bottom: 25px;"><input type="submit" name="btn" class="btn btn-success" value="=" style="height:100%;" /></td>
     </tr>
     <tr>
-        <td colspan="2" ><input type="submit" name="btn" class="btn btn-default"  value="0" style="width:100%;" /></td>
-        <td><input type="submit" name="btn" class="btn btn-warning"  value="," /></td>
+        <td colspan="2"><input type="submit" name="btn" class="btn btn-default" value="0" style="width:100%;" /></td>
+        <td><input type="submit" name="btn" class="btn btn-warning" value="." /></td>
         <td style="padding-right:0 !important"><input type="submit" name="btn" class="btn btn-warning" value="+" /></td>
     </tr>
 </table>

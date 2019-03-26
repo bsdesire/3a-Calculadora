@@ -3,6 +3,11 @@
     padding-bottom: 20px;
 }
 
+@font-face {
+    font-family: "Digital-7";
+    src: url("digital-7.ttf");
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -19,11 +24,19 @@ textarea {
 .visor {
     background-color: #009900 !important;
     color: #ccc;
+    font-family: Digital-7;
+    font-size: 21px;
 }
 
 .calculadora {
     border: 5px solid #000;
     background-color: #808080;
+}
+
+.calculadora > tbody > tr > td > input{
+    font-family: Digital-7;
+    font-size:18px;
+    width:100%;
 }
 
 .calculadora > tbody > tr > td:first-child{
@@ -35,12 +48,12 @@ textarea {
 }
 
 .calculadora > tbody > tr:first-child > td{
-    padding-top:12px;
+    padding-top:25px;
     padding-bottom:5px;
 }
 
 .calculadora > tbody > tr:last-child > td {
-    padding-bottom: 12px;
+    padding-bottom: 25px;
 }
 
 

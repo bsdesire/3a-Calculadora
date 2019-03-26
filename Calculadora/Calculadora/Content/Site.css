@@ -16,3 +16,35 @@ textarea {
     max-width: 280px;
 }
 
+.visor {
+    background-color: #009900 !important;
+    color: #ccc;
+}
+
+.calculadora {
+    border: 5px solid #000;
+    background-color: #808080;
+}
+
+.calculadora > tbody > tr > td:first-child{
+    padding-left:12px;
+}
+
+.calculadora > tbody > tr > td:last-child {
+    padding-right: 12px;
+}
+
+.calculadora > tbody > tr:first-child > td{
+    padding-top:12px;
+    padding-bottom:5px;
+}
+
+.calculadora > tbody > tr:last-child > td {
+    padding-bottom: 12px;
+}
+
+
+    /* Override Bootstraps */
+.btn {
+    min-width: 42px !important;
+}

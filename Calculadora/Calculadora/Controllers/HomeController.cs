@@ -13,6 +13,8 @@ namespace Calculadora.Controllers
         {
             //Inicializar o visor com o zero
             ViewBag.Resposta = "0";
+            Session["primeiraVezOperador"] = true;
+            Session["iniciarOperando"] = false;
             return View();
         }
 
@@ -21,6 +23,7 @@ namespace Calculadora.Controllers
         public ActionResult Index(string visor, string btn)
         {
             string resposta = visor;
+            string trocavalor = resposta.Substring(1);
             //avaliar o valor do btn
             switch (btn)
             {
@@ -34,15 +37,94 @@ namespace Calculadora.Controllers
                 case "7":
                 case "8":
                 case "9":
-                    //determinar se o visor tem apenas o zero
-                    if (resposta == "0") //visor =="0"
+              
+            
+            if ((bool)Session["iniciarOperando"] || visor.Equals("0")) //visor =="0"
                     {
                         resposta = btn;
                     }
                     else
                     {
-                        resposta += btn;
+                        resposta = resposta + btn;
                     }
+                    Session["iniciarOperando"] = false;
+                    break;
+                //Alterar o valor de positivo para negativo
+                case "+/-":
+                    if (!visor.Contains("-"))
+                    {
+                        resposta = "-" + visor;
+                    }
+                    else
+                    {
+                        resposta = trocavalor;
+                    }
+                    break;
+                case ",":
+                    //Processar o caso da ','
+                    if (!visor.Contains(","))
+                    {
+                        resposta = resposta + btn;
+                    }
+                    break;
+                //Se entrei aqui, é porque foi selecionado um 'operador'
+                case "+":
+                case "-":
+                case "X":
+                case "/":
+                case "=":
+                    //É a primeira vez que carreguei num destes operadores?
+                    if ((bool)Session["primeiraVezOperador"]) // == true é facultativo
+                    { 
+                        Session["primeiraVezOperador"] = false;
+                    }
+                    else
+                    {
+                        // Recuperar os valores dos operandos
+                        double operador1 = Convert.ToDouble((string)Session["primeiroOperando"]);
+                        double operador2 = Convert.ToDouble(visor);
+                        switch ((string)Session["operadorAnterior"])
+                        {
+                            case "+":
+                                visor = operador1 + operador2 + "";
+                                break;
+                            case "-":
+                                visor = operador1 - operador2 + "";
+                                break;
+                            case "X":
+                                visor = operador1 * operador2 + "";
+                                break;
+                            case "/":
+                                visor = operador1 / operador2 + "";
+                                break;
+                        }
+
+                    }
+                    resposta = visor;
+                    Session["primeiroOperando"] = visor;
+                    // limpar display
+                    Session["iniciarOperando"] = true;
+
+                    if (btn.Equals("="))
+                    {
+                        //Marcar o operador como primeiro operando
+                        Session["primeiraVezOperador"] = true;
+                    }
+                    else
+                    {
+                        // Guardar o valor do operador
+                        Session["operadorAnterior"] = btn;
+                        Session["primeiraVezOperador"] = false;
+                    }
+                    //Guardar o display para utilização futura
+                    Session["primeiroOperando"] = resposta;
+                    Session["iniciarOperando"] = true;
+                    break;
+                //Apagar o valor dentro do ecrã
+                case "C":
+                    resposta = "0";
+                    Session["primeiraVezOperador"] = true;
+                    Session["iniciarOperando"] = false;
                     break;
             }
 
